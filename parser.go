@@ -18,7 +18,7 @@ func JsonUnmarshaller (jsonfile []byte) *Metric {
 		panic(err)
 	}
 
-	return mt
+	return &c[0]
 }
 
 func GetLast(input *Metric) float64 {
