@@ -6,11 +6,6 @@ import (
 )
 
 func JsonUnmarshaller (jsonfile []byte) *Metric {
-	mt := &Metric{
-		MetricName: "",
-		Tags: map[string]string{},
-		Dps: map[string]float64{},
-	}
 
 	c:= make([]Metric,0,0)
 	err :=json.Unmarshal(jsonfile, &c)
