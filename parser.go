@@ -6,7 +6,7 @@ func JsonUnmarshaller (jsonfile []byte) *Metric {
 	mt := &Metric{
 		MetricName: "",
 		Tags: map[string]string{},
-		Dps: map[int64]int{},
+		Dps: map[int64]float64{},
 	}
 	err :=json.Unmarshal(jsonfile, mt)
 	if err != nil {
@@ -16,7 +16,7 @@ func JsonUnmarshaller (jsonfile []byte) *Metric {
 	return mt
 }
 
-func GetLast(input *Metric) int {
+func GetLast(input *Metric) float64 {
 	var last int64
 	last = 0
 	for k := range input.Dps {
