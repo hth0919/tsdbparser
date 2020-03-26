@@ -2,19 +2,18 @@ package tsdbParser
 
 import (
 	"encoding/json"
-	"io"
 	"strconv"
 )
 
-
-
-func JsonUnmarshaller (jsonfile io.ReadCloser) *Metric {
+func JsonUnmarshaller (jsonfile []byte) *Metric {
 	mt := &Metric{
 		MetricName: "",
 		Tags: map[string]string{},
 		Dps: map[string]float64{},
 	}
-	err :=json.NewDecoder(jsonfile).Decode(mt)
+
+	c:= make([]Metric,0,0)
+	err :=json.Unmarshal(jsonfile, &c)
 	if err != nil {
 		panic(err)
 	}
